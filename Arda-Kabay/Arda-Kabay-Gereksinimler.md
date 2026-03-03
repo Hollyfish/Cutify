@@ -1,4 +1,4 @@
-# Cutify – Gereksinimler
+# Arda Kabay'ın Gereksinimleri
 
 ## 1. Giriş Yap (Login)
 
