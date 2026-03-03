@@ -44,7 +44,7 @@ Proje dokümantasyonuna aşağıdaki linklerden erişebilirsiniz:
 
 1. [Gereksinim Analizi](Gereksinim-Analizi.md)
 2. [REST API Tasarımı](API-Tasarimi.md)
-3. [Web Frontend Görevleri](Arda-Kabay/Arda-Kabay-Web-Frontend-Gorevleri.md)
+3. [Web Frontend Görevleri](WebFrontEnd.md)
 4. [Mobil Frontend Görevleri](MobilFrontEnd.md)
 5. [Mobil Backend Görevleri](MobilBackEnd.md)
 6. [REST API](Rest-API.md)
