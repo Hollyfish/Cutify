@@ -6,7 +6,10 @@ Bu dokümanda mobil uygulamanın REST API ile iletişimini sağlayan backend ent
 
 ---
 
-## Mobil Backend Görevleri
+## Grup Üyelerinin Mobil Backend Görevleri
+
+1. [Arda Kabay'ın Mobil Backend Görevleri](Arda-Kabay/Arda-Kabay-Mobil-Backend-Gorevleri.md)
+
 
 ### 1. Üye Olma Servisi
 

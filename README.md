@@ -46,7 +46,7 @@ Proje dokümantasyonuna aşağıdaki linklerden erişebilirsiniz:
 2. [REST API Tasarımı](Arda-Kabay/Arda-Kabay-Rest-API-Gorevleri.md)
 3. [Web Frontend Görevleri](Arda-Kabay/Arda-Kabay-Web-Frontend-Gorevleri.md)
 4. [Mobil Frontend Görevleri](Arda-Kabay/Arda-Kabay-Mobil-Frontend-Gorevleri.md)
-5. [Mobil Backend Görevleri](Arda-Kabay/Arda-Kabay-Mobil-Backend-Gorevleri.md)
+5. [Mobil Backend Görevleri](MobilBackEnd.md)
 
 ---
 
