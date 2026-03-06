@@ -1,12 +1,3 @@
-# API Tasarımı - OpenAPI Specification
-
-**OpenAPI Spesifikasyon Dosyası:** [cutify.yaml](cutify.yaml)
-
-Bu doküman, Cutify randevu yönetim sistemi için OpenAPI 3.0 standardına uygun taslak API tasarımını içermektedir.
-
-## OpenAPI Specification
-
-```yaml
 openapi: 3.0.3
 info:
   title: Cutify API
