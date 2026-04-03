@@ -1,5 +1,7 @@
 # Arda Kabay'ın Web Frontend Görevleri
 
+**Frontend Domain:** https://cutify-frontend.vercel.app
+
 **Front-end Test Videosu:** Link buraya eklenecek
 
 ## 1. Üye Olma (Kayıt) Sayfası
