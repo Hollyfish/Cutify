@@ -1,71 +1,166 @@
-# Arda Kabay'ın Gereksinimleri
+# Arda Kabay'ın REST API Metotları
 
-## 1. Giriş Yap (Login)
+REST API Adresi: https://cutify-backend.onrender.com/v1
 
-API Metodu: POST /auth/login
-Açıklama: Kullanıcıların email ve şifre bilgileri ile sisteme giriş yapmasını sağlar. Giriş yapan kullanıcıya kimlik doğrulama token’ı verilir. Sistem güvenliği için doğrulama işlemleri yapılır.
+API Test Videosu: Link buraya eklenecek
 
-## 2. Üye Olma (Kayıt)
+---
 
-API Metodu: POST /auth/register
-Açıklama: Yeni kullanıcıların sisteme kayıt olmasını sağlar. Kullanıcı email ve şifre belirleyerek sisteme hesap oluşturabilir. Kişisel bilgilerin güvenli şekilde saklanması sağlanır.
+## 1. Giriş Yap
 
-## 3. Berberleri Listele
+- Endpoint: POST /auth/login
 
-API Metodu: GET /barbers
-Açıklama: Sistemde kayıtlı tüm berberlerin ve sundukları hizmetlerin listelenmesini sağlar. Kullanıcılar ana sayfada berberleri görüntüleyebilir.
+- Açıklama: Kullanıcı email ve şifre ile giriş yapar ve sistemden token alır.
 
-## 4. Berber Detayını Görüntüle
+- Request Body:
+{
+  "email": "kullanici@example.com",
+  "password": "Guvenli123!"
+}
 
-API Metodu: GET /barbers/{barberId}
-Açıklama: Seçilen berberin detay bilgilerini ve berberin uygun randevu saatlerini görüntülemeyi sağlar.
+---
 
-## 5. Randevu Oluştur
+## 2. Üye Olma
 
-API Metodu: POST /appointments
-Açıklama: Kullanıcıların berber ve hizmet seçerek yeni randevu oluşturmasını sağlar.
+- Endpoint: POST /auth/register
 
-## 6. Randevu Güncelle
+- Açıklama: Yeni kullanıcı oluşturulur.
 
-API Metodu: PUT /appointments/{appointmentId}
-Açıklama: Kullanıcıların mevcut randevu bilgilerini (tarih, saat veya hizmet) güncellemesini sağlar.
+- Request Body:
+{
+  "email": "kullanici@example.com",
+  "password": "Guvenli123!",
+  "firstName": "Ahmet",
+  "lastName": "Yılmaz"
+}
 
-## 7. Randevu Sil
+---
 
-API Metodu: DELETE /appointments/{appointmentId}
-Açıklama: Kullanıcıların oluşturdukları randevuları iptal etmesini sağlar. Silme işlemi geri alınamaz.
+## 3. Berberleri Listeleme
 
-## 8. Kullanıcı Profilini Görüntüle
+- Endpoint: GET /barbers
 
-API Metodu: GET /users/{userId}
-Açıklama: Kullanıcının profil bilgilerini, email, telefon ve hesap bilgilerini görüntülemesini sağlar. Güvenlik için kimlik doğrulama gereklidir.
+- Açıklama: Tüm berberler listelenir.
 
-## 9. Kullanıcı Profilini Güncelle
+---
 
-API Metodu: PUT /users/{userId}
-Açıklama: Kullanıcıların ad, soyad, email ve telefon gibi kişisel bilgilerini güncellemesini sağlar. Kullanıcı yalnızca kendi profil bilgilerini değiştirebilir.
+## 4. Berber Detay Görüntüleme
 
-## 10. Berber Hizmetlerini Listele
+- Endpoint: GET /barbers/{barberId}
 
-API Metodu: GET /barbers/{barberId}/services
-Açıklama: Seçilen berberin sunduğu hizmetlerin listesini görüntülemeyi sağlar.
+- Açıklama: Seçilen berberin detayları ve uygun saatleri gösterilir.
 
-## 11. Randevu Durumunu Güncelle (Admin)
+---
 
-API Metodu: PUT /appointments/{appointmentId}/status
-Açıklama: Yönetici yetkisine sahip kullanıcıların randevu durumunu (Aktif, Tamamlandı, İptal) güncellemesini sağlar.
+## 5. Randevu Oluşturma
 
-## 12. Berber Ekle
+- Endpoint: POST /appointments
 
-API Metodu: POST /barbers
-Açıklama: Sisteme yeni berber eklenmesini sağlar.
+- Açıklama: Kullanıcı yeni randevu oluşturur.
 
-## 13. Berber Güncelle
+- Request Body:
+{
+  "userId": "1",
+  "barberId": "1",
+  "serviceId": "1",
+  "date": "2026-04-05",
+  "time": "14:00"
+}
 
-API Metodu: PUT /barbers/{barberId}
-Açıklama: Mevcut berber bilgilerini güncellemeyi sağlar.
+---
 
-## 14. Berber Sil
+## 6. Randevu Güncelleme
 
-API Metodu: DELETE /barbers/{barberId}
-Açıklama: Sistemde kayıtlı berberin silinmesini sağlar.
+- Endpoint: PUT /appointments/{appointmentId}
+
+- Açıklama: Randevu bilgileri güncellenir.
+
+- Request Body:
+{
+  "date": "2026-04-06",
+  "time": "15:00"
+}
+
+---
+
+## 7. Randevu Silme
+
+- Endpoint: DELETE /appointments/{appointmentId}
+
+- Açıklama: Randevu iptal edilir.
+
+---
+
+## 8. Profil Görüntüleme
+
+- Endpoint: GET /users/{userId}
+
+- Açıklama: Kullanıcı profil bilgileri görüntülenir.
+
+---
+
+## 9. Profil Güncelleme
+
+- Endpoint: PUT /users/{userId}
+
+- Açıklama: Kullanıcı profil bilgileri güncellenir.
+
+- Request Body:
+{
+  "firstName": "Arda",
+  "lastName": "Kabay",
+  "email": "arda@example.com",
+  "phone": "+905551234567"
+}
+
+---
+
+## 10. Berber Hizmetlerini Listeleme
+
+- Endpoint: GET /barbers/{barberId}/services
+
+- Açıklama: Berberin sunduğu hizmetler listelenir.
+
+---
+
+## 11. Randevu Durum Güncelleme (Admin)
+
+- Endpoint: PUT /appointments/{appointmentId}/status
+
+- Açıklama: Randevu durumu değiştirilir.
+
+- Request Body:
+{
+  "status": "Tamamlandı"
+}
+
+---
+
+## 12. Berber Ekleme
+
+- Endpoint: POST /barbers
+
+- Açıklama: Sisteme yeni berber eklenir.
+
+- Request Body:
+{
+  "name": "Berber Hasan",
+  "location": "Isparta",
+  "phone": "+905558889977"
+}
+
+---
+
+## 13. Berber Güncelleme
+
+- Endpoint: PUT /barbers/{barberId}
+
+- Açıklama: Berber bilgileri güncellenir.
+
+---
+
+## 14. Berber Silme
+
+- Endpoint: DELETE /barbers/{barberId}
+
+- Açıklama: Berber silinir.
