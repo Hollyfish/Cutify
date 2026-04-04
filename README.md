@@ -16,7 +16,7 @@
 
 ## Proje Hakkında
 
-![Ürün Tanıtım Görseli](Product.png)
+![Cutify Banner](./assets/cutify-banner.svg)
 
 **Proje Tanımı:**
 
