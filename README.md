@@ -1,8 +1,12 @@
 # Cutify Projesi
 
-> **Not:** Bu proje dokümantasyonu Cutify randevu yönetim sistemi için hazırlanmıştır.
+> **Youtube Videoları:** 
+[4. Aşamanın Videosu:](https://youtu.be/qnLUw6VTM7A)
 
----
+
+[3. Aşamanın Videosu:](https://youtu.be/yIyGXiAKU3E)
+
+
 
 ## Proje Hakkında
 
@@ -26,8 +30,8 @@ https://example.com
 
 ## Proje Linkleri
 
-* **REST API Adresi:** https://api.example.com
-* **Web Frontend Adresi:** https://frontend.example.com
+* **REST API Adresi:** https://cutify-backend.onrender.com/v1
+* **Web Frontend Adresi:** https://cutify-frontend.vercel.app
 
 ---
 
