@@ -1,0 +1,410 @@
+{
+  "info": {
+    "name": "Cutify API - Berber Randevu Sistemi",
+    "_postman_id": "cutify-api-collection-2026",
+    "description": "Cutify berber randevu sistemi için tüm REST API endpoint testleri. Base URL: https://cutify-backend.onrender.com/v1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cutify-backend.onrender.com/v1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🔐 Auth",
+      "item": [
+        {
+          "name": "1. Giriş Yap (Login)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"arda@example.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            },
+            "description": "Kayıtlı kullanıcı ile giriş yapar. Başarılı olursa token ve kullanıcı bilgisi döner."
+          }
+        },
+        {
+          "name": "1b. Giriş Yap - Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@cutify.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            },
+            "description": "Admin kullanıcısı ile giriş yapar."
+          }
+        },
+        {
+          "name": "1c. Giriş Yap - Hatalı Şifre (401 testi)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"arda@example.com\",\n  \"password\": \"yanlis_sifre\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            },
+            "description": "Yanlış şifre ile 401 hatası döndüğünü test eder."
+          }
+        },
+        {
+          "name": "2. Üye Ol (Register)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Mehmet\",\n  \"lastName\": \"Yılmaz\",\n  \"email\": \"mehmet.yilmaz@example.com\",\n  \"phone\": \"+905556667788\",\n  \"password\": \"Mehmet123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register"]
+            },
+            "description": "Yeni kullanıcı kaydı oluşturur. 201 ile yeni kullanıcı döner."
+          }
+        },
+        {
+          "name": "2b. Üye Ol - Var Olan Email (400 testi)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Arda\",\n  \"lastName\": \"Kabay\",\n  \"email\": \"arda@example.com\",\n  \"phone\": \"+905551112233\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register"]
+            },
+            "description": "Zaten kayıtlı email ile 400 hatası döndüğünü test eder."
+          }
+        }
+      ]
+    },
+    {
+      "name": "💈 Berberler",
+      "item": [
+        {
+          "name": "3. Berberleri Listele",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/barbers",
+              "host": ["{{baseUrl}}"],
+              "path": ["barbers"]
+            },
+            "description": "Tüm berberleri listeler. Auth gerektirmez."
+          }
+        },
+        {
+          "name": "4. Berber Detay Görüntüle",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/barbers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["barbers", "1"]
+            },
+            "description": "ID'si 1 olan berberin detaylarını getirir."
+          }
+        },
+        {
+          "name": "4b. Berber Detay - Bulunamadı (404 testi)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/barbers/999",
+              "host": ["{{baseUrl}}"],
+              "path": ["barbers", "999"]
+            },
+            "description": "Olmayan berber ID ile 404 hatası döndüğünü test eder."
+          }
+        },
+        {
+          "name": "10. Berber Hizmetlerini Listele",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/barbers/1/services",
+              "host": ["{{baseUrl}}"],
+              "path": ["barbers", "1", "services"]
+            },
+            "description": "ID'si 1 olan berberin hizmetlerini (saç kesimi, sakal vb.) listeler."
+          }
+        },
+        {
+          "name": "12. Berber Ekle (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-user-role", "value": "admin" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Berber Kemal\",\n  \"location\": \"Isparta Bahçelievler\",\n  \"phone\": \"+905553334455\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/barbers",
+              "host": ["{{baseUrl}}"],
+              "path": ["barbers"]
+            },
+            "description": "Admin yetkisiyle yeni berber ekler. Header'da x-user-role: admin olmalı."
+          }
+        },
+        {
+          "name": "12b. Berber Ekle - Yetkisiz (403 testi)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Berber Kemal\",\n  \"location\": \"Isparta Bahçelievler\",\n  \"phone\": \"+905553334455\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/barbers",
+              "host": ["{{baseUrl}}"],
+              "path": ["barbers"]
+            },
+            "description": "Admin header'ı olmadan berber eklemeye çalışınca 403 döndüğünü test eder."
+          }
+        },
+        {
+          "name": "13. Berber Güncelle (Admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-user-role", "value": "admin" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Berber Ahmet Pro\",\n  \"location\": \"Isparta Merkez - Yeni Adres\",\n  \"phone\": \"+905551234567\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/barbers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["barbers", "1"]
+            },
+            "description": "Admin yetkisiyle ID'si 1 olan berberi günceller."
+          }
+        },
+        {
+          "name": "14. Berber Sil (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "x-user-role", "value": "admin" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/barbers/2",
+              "host": ["{{baseUrl}}"],
+              "path": ["barbers", "2"]
+            },
+            "description": "Admin yetkisiyle ID'si 2 olan berberi siler."
+          }
+        }
+      ]
+    },
+    {
+      "name": "📅 Randevular",
+      "item": [
+        {
+          "name": "5. Randevu Oluştur",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"1\",\n  \"barberId\": \"1\",\n  \"serviceId\": \"1\",\n  \"date\": \"2026-04-10\",\n  \"time\": \"10:00\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/appointments",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments"]
+            },
+            "description": "Yeni randevu oluşturur. 201 ile oluşturulan randevu döner."
+          }
+        },
+        {
+          "name": "6. Randevu Güncelle",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"2026-04-12\",\n  \"time\": \"11:00\",\n  \"serviceId\": \"2\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/appointments/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "1"]
+            },
+            "description": "ID'si 1 olan randevunun tarih, saat veya hizmetini günceller."
+          }
+        },
+        {
+          "name": "7. Randevu Sil",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/appointments/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "1"]
+            },
+            "description": "ID'si 1 olan randevuyu siler. Silinen randevu bilgisini döner."
+          }
+        },
+        {
+          "name": "11. Randevu Durumu Güncelle (Admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-user-role", "value": "admin" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Tamamlandı\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/appointments/1/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "1", "status"]
+            },
+            "description": "Admin yetkisiyle randevu durumunu günceller. Örn: Aktif → Tamamlandı."
+          }
+        },
+        {
+          "name": "11b. Randevu Durumu - Yetkisiz (403 testi)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Tamamlandı\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/appointments/1/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "1", "status"]
+            },
+            "description": "Admin header'ı olmadan durum güncelleyince 403 döndüğünü test eder."
+          }
+        }
+      ]
+    },
+    {
+      "name": "👤 Kullanıcılar",
+      "item": [
+        {
+          "name": "8. Profil Görüntüle",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "1"]
+            },
+            "description": "ID'si 1 olan kullanıcının profili ve randevularını getirir."
+          }
+        },
+        {
+          "name": "8b. Profil Görüntüle - Bulunamadı (404 testi)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/999",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "999"]
+            },
+            "description": "Olmayan kullanıcı ID ile 404 hatası döndüğünü test eder."
+          }
+        },
+        {
+          "name": "9. Profil Güncelle",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Arda\",\n  \"lastName\": \"Kabay\",\n  \"email\": \"arda.yeni@example.com\",\n  \"phone\": \"+905551112299\",\n  \"password\": \"YeniSifre123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "1"]
+            },
+            "description": "ID'si 1 olan kullanıcının profil bilgilerini günceller."
+          }
+        }
+      ]
+    },
+    {
+      "name": "✅ API Sağlık Kontrolü",
+      "item": [
+        {
+          "name": "API Çalışıyor mu?",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}",
+              "host": ["{{baseUrl}}"]
+            },
+            "description": "API'nin ayakta olduğunu kontrol eder. 'Cutify API çalışıyor' mesajı döner."
+          }
+        }
+      ]
+    }
+  ]
+}
