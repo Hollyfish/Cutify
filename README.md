@@ -58,5 +58,6 @@ Proje dokümantasyonuna aşağıdaki linklerden erişebilirsiniz:
 4. [Mobil Frontend Görevleri](MobilFrontEnd.md)
 5. [Mobil Backend Görevleri](MobilBackEnd.md)
 6. [REST API](Rest-API.md)
+7. [Video Sunum](Videosunum.md)
 ---
 
