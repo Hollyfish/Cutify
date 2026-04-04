@@ -1,10 +1,16 @@
 # Cutify Projesi
 
-> **Youtube Videoları:** 
-[4. Aşamanın Videosu:](https://youtu.be/qnLUw6VTM7A)
+> ## 🔗 Backend - Frontend Kodları
 
+- [Backend](https://github.com/Hollyfish/cutify-backend)
 
-[3. Aşamanın Videosu:](https://youtu.be/yIyGXiAKU3E)
+- [Frontend](https://github.com/Hollyfish/cutify-frontend)
+ 
+## 🔗Youtube Videoları:
+
+- [4. Aşamanın Videosu:](https://youtu.be/qnLUw6VTM7A)
+
+- [3. Aşamanın Videosu:](https://youtu.be/yIyGXiAKU3E)
 
 
 
